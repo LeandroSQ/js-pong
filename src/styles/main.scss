@@ -1,0 +1,46 @@
+@import "variables";
+
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+	backface-visibility: hidden;
+
+	-webkit-tap-highlight-color: transparent;
+	-webkit-touch-callout: none;
+	// user-select: none;
+}
+
+html, body {
+	overflow: hidden;
+	width: 100%;
+	width: 100vw;
+	width: 100svw;
+	height: 100%;
+	height: 100svh;
+	height: -webkit-fill-available;
+}
+
+html {
+	background-color: var(--background);
+}
+
+body {
+	// transform: translateZ(0);
+	-webkit-font-smoothing: subpixel-antialiased;
+
+	display: flex;
+	place-content: center;
+	place-items: center;
+}
+
+canvas {
+	animation: animate-fade-in 1s ease-in-out forwards;
+
+	/* image-rendering: optimizeSpeed;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: -o-crisp-edges;
+	image-rendering: pixelated;
+	-ms-interpolation-mode: nearest-neighbor; */
+}
