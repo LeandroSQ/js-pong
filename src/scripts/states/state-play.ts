@@ -221,6 +221,10 @@ export class StatePlay implements IState {
 	}
 
 	private onFlagCell(mouse: Vector) {
+		const cell = this.grid.getCell(mouse);
+		if (!cell) throw new Error("Invalid cell");
+		if (cell.isRevealed) return;
+
 		this.grid.toggleFlag(mouse);
 
 		if (this.grid.flaggedCount === this.grid.bombCount && this.grid.filterCells(x => x.isBomb && x.isFlagged).length === this.grid.bombCount) {
