@@ -1,54 +1,21 @@
-import { Difficulty } from './types/difficulty';
+export const PADDLE_WIDTH = 20;
+export const PADDLE_HEIGHT = 100;
+export const PADDLE_SPEED = 1.5;
+export const PADDLE_MARGIN = 10;
 
-export const DIFFICULTIES: { EASY: Difficulty, MEDIUM: Difficulty, HARD: Difficulty } = {
-	EASY: {
-		columns: 9,
-		rows: 9,
-		bombs: 10,
-		name: "Easy"
-	},
-	MEDIUM: {
-		columns: 16,
-		rows: 16,
-		bombs: 40,
-		name: "Medium"
-	},
-	HARD: {
-		columns: 30,
-		rows: 16,
-		bombs: 99,
-		name: "Hard"
-	}
-};
+export const BALL_RADIUS = 10;
+export const BALL_SPEED = 825;
 
-export const BOMB_PLACE_AVOIDANCE_RADIUS = 3;
+export const BALL_TIMER = 3.0;
 
-export const FONT_FAMILY = "7Segments";
+export const FONT_SIZE = 48;
+export const FONT_FAMILY = "'Pixelify Sans', sans-serif";
 
-export const UI_SCALING = 2;
-export const PADDING = 10 * UI_SCALING;
-export const BORDER = 3 * UI_SCALING;
-export const DISPLAY_BORDER = 1 * UI_SCALING;
-export const DISPLAY_MARGIN = 3 * UI_SCALING;
-export const DISPLAY_TEXT_MARGIN = 2 * UI_SCALING;
-export const CELL_BORDER = 2 * UI_SCALING;
-export const DEFAULT_CELL_SIZE = 20 * UI_SCALING;
-export const HEADER_HEIGHT = DEFAULT_CELL_SIZE * 2;
+export const MIDDLE_LINE_MARGIN = FONT_SIZE * 1.35 + PADDLE_MARGIN;
+export const MIDDLE_CIRCLE_RADIUS = BALL_RADIUS * 3;
 
-/* Panel */
-export const COLOR_BASE = "rgb(184, 184, 184)";
-export const COLOR_HIGHLIGHT = "rgb(255, 255, 255)";
-export const COLOR_SHADOW = "rgb(117, 117, 117)";
-
-/* Displays */
-export const COLOR_DISPLAY_BACKGROUND = "rgb(0, 0, 0)";
-export const COLOR_DISPLAY_DIGIT_OFF = "rgb(99, 0, 6)";
-export const COLOR_DISPLAY_DIGIT_ON = "rgb(255, 0, 15)";
-
-/* Cells */
-export const COLOR_CELL_1 = "rgb(0, 0, 254)";
-export const COLOR_CELL_2 = "rgb(0, 119, 7)";
-export const COLOR_CELL_3 = "rgb(255, 0, 10)";
-export const COLOR_CELL_4 = "rgb(0, 0, 116)";
-export const COLOR_CELL_5 = "rgb(121, 0, 5)";
-export const COLOR_CELLS = [COLOR_CELL_1, COLOR_CELL_2, COLOR_CELL_3, COLOR_CELL_4, COLOR_CELL_5];
+export const AUDIO_BOUNCE_HZ = 440;
+export const AUDIO_DURATION = 75;
+export const AUDIO_VOLUME = 0.2;
+export const AUDIO_SCORE_HZ = 220;
+export const AUDIO_TIMER_HZ = 110;

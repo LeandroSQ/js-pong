@@ -43,6 +43,11 @@ export class Rectangle {
 		return new Vector(this.x, this.y);
 	}
 
+	set position(value: Vector) {
+		this.x = value.x;
+		this.y = value.y;
+	}
+
 	get center(): Vector {
 		return new Vector(this.x + this.width / 2, this.y + this.height / 2);
 	}

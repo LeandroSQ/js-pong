@@ -1,28 +1,20 @@
-import { Main } from "./../main";
-import { Log } from "./log";
 import { Color } from "./color";
+import { Log } from "./log";
 
 export class Theme {
 
 	public static background: string;
-
 	public static foreground: string;
-
+	public static secondary: string;
 	public static containerBackground: string;
-
 	public static containerBorder: string;
-
 	public static containerShadow: string;
 
-	public static cellAlive: string;
+	public static get isDark() {
+		return window.matchMedia("(prefers-color-scheme: dark)").matches;
+	}
 
-	public static cellDead: string;
-
-	private static main: Main;
-
-	public static async setup(main: Main) {
-		Theme.main = main;
-
+	public static async setup() {
 		Theme.loadVariables();
 		Theme.observeChanges();
 	}
@@ -32,11 +24,10 @@ export class Theme {
 		const variables = [
 			"--background",
 			"--foreground",
+			"--secondary",
 			"--container-background",
 			"--container-border",
-			"--container-shadow",
-			"--cell-alive",
-			"--cell-dead",
+			"--container-shadow"
 		];
 
 		Log.info("Theme", `Setting up theme, loading ${variables.length} variables...`);

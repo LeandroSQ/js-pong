@@ -1,7 +1,7 @@
 {
-	"name": "js-minesweeper",
+	"name": "js-pong",
 	"version": "1.0.0",
-	"description": "Minesweeper",
+	"description": "Pong",
 	"main": "src/index.html",
 	"author": "LeandroSQ",
 	"license": "MIT",
@@ -12,9 +12,10 @@
 		"lint": "eslint ./src/scripts/**/*.ts"
 	},
 	"keywords": [
-		"Minesweeper",
-		"Windows XP",
-		"Windows 98",
+		"Pong",
+		"Tennis",
+		"Player vs COM",
+		"COM vs COM",
 		"Game",
 		"JavaScript",
 		"TypeScript",

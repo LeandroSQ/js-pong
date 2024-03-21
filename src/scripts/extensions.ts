@@ -27,11 +27,14 @@ declare global {
 		average: (...values: number[]) => number;
 		distance: (x1: number, y1: number, x2: number, y2: number) => number;
 		randomInt: (min: number, max: number) => number;
+		lerp: (a: number, b: number, t: number) => number;
+		oscilate: (time: number, cyclesPerSecond: number, minAmplitude: number, maxAmplitude: number) => number;
 	}
 
 	interface CanvasRenderingContext2D {
 		clear: () => void;
 		line: (x1: number, y1: number, x2: number, y2: number) => void;
+		fillTextCentered(text: string, x: number, y: number): void;
 	}
 
 	interface PromiseConstructor {
@@ -138,6 +141,27 @@ Math.randomInt = function (min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 
+Math.lerp = function (a, b, t) {
+	return a + (b - a) * t;
+};
+
+Math.oscilate = function (time, cyclesPerSecond, minAmplitude, maxAmplitude) {
+	// Calculate the angular frequency (in radians per second)
+	const angularFrequency = 2 * Math.PI * cyclesPerSecond;
+
+	// Calculate the amplitude range
+	const amplitudeRange = maxAmplitude - minAmplitude;
+
+	// Calculate the sine wave value at the given time
+	const sineValue = Math.sin(angularFrequency * time);
+
+	// Scale the sine value to the amplitude range
+	const scaledValue = (sineValue + 1) / 2; // Shift sine value to [0, 1] range
+	const amplitude = minAmplitude + scaledValue * amplitudeRange;
+
+	return amplitude;
+};
+
 CanvasRenderingContext2D.prototype.clear = function () {
 	this.clearRect(0, 0, this.canvas.width, this.canvas.height);
 };
@@ -147,6 +171,11 @@ CanvasRenderingContext2D.prototype.line = function (x1, y1, x2, y2) {
 	this.moveTo(x1, y1);
 	this.lineTo(x2, y2);
 	this.stroke();
+};
+
+CanvasRenderingContext2D.prototype.fillTextCentered = function(text, x, y) {
+	const metrics = this.measureText(text);
+	this.fillText(text, x - metrics.width / 2, y);
 };
 
 Promise.delay = function (amount) {

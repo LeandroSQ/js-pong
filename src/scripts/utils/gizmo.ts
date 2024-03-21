@@ -134,36 +134,52 @@ export class Gizmo {
 	static list: IGizmo[] = [];
 
 	static render(ctx: CanvasRenderingContext2D) {
+		if (!DEBUG) return;
+		
 		for (const gizmo of Gizmo.list) {
 			gizmo.render(ctx);
 		}
 	}
 
 	static clear() {
+		if (!DEBUG) return;
+		
 		Gizmo.list = [];
 	}
 
 	static rect(rect: Rectangle, color = "#fff") {
+		if (!DEBUG) return;
+		
 		Gizmo.list.push(new RectangleGizmo(rect, color));
 	}
 
 	static outline(rect: Rectangle, color = "#fff") {
+		if (!DEBUG) return;
+		
 		Gizmo.list.push(new StrokeRectangleGizmo(rect, color));
 	}
 
 	static line(start: Vector, end: Vector, color = "#fff", thickness = 1) {
+		if (!DEBUG) return;
+		
 		Gizmo.list.push(new LineGizmo(start, end, color, thickness));
 	}
 
 	static circle(center: Vector, radius: number, color = "#fff") {
+		if (!DEBUG) return;
+		
 		Gizmo.list.push(new CircleGizmo(center, radius, color));
 	}
 
 	static text(text: string, position: Vector, color = "#fff", alignment: CanvasTextAlign = "left") {
+		if (!DEBUG) return;
+		
 		Gizmo.list.push(new TextGizmo(text, position, color, alignment));
 	}
 
 	static arrow(origin: Vector, vector: Vector, color = "#fff") {
+		if (!DEBUG) return;
+		
 		Gizmo.list.push(new VectorGizmo(origin, vector, color));
 	}
 

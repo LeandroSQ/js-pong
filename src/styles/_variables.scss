@@ -1,10 +1,12 @@
 /* Light mode */
 html {
-	--background: #F5F5F5;
-	--foreground: #2C3A47;
+	--background: #F7ECDE;
+	--foreground: #E3CAA5;
+	--secondary: #E3CAA5;
 	--container-background: rgba(255, 255, 255, 0.9);
-	--container-shadow: rgba(0, 0, 0, 0.25);
+	--container-shadow: #AD8B7360;
 	--container-border: rgba(0, 0, 0, 0.1);
+	--vignette: #AD8B73;
 }
 
 body {
@@ -14,10 +16,12 @@ body {
 /* Dark mode */
 @media (prefers-color-scheme: dark) {
 	html {
-		--background: #2f3542;
-		--foreground: #CAD3C8;
+		--background: #131b2c;
+		--foreground: #dfe4ea;
+		--secondary: #747d8c;
 		--container-background: rgba(43, 43, 48, 0.45);
 		--container-shadow: rgba(0, 0, 0, 0.25);
 		--container-border: rgba(0, 0, 0, 0.1);
+		--vignette: black;
 	}
 }

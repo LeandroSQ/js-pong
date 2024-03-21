@@ -10,7 +10,7 @@ export class DensityCanvas {
 
 	private virtualHeight = 0;
 
-	private drawRatio = 1;
+	public drawRatio = 1;
 
 	private overrideRatio: number | undefined = undefined;
 

@@ -1,6 +1,6 @@
-import { BORDER, COLOR_SHADOW, UI_SCALING } from "../constants";
 import { Rectangle } from "../models/rectangle";
-import { renderInnerPanel, renderOutsidePanel } from "../utils/panel";
+import { Cursor, CursorType } from "../utils/cursor";
+import { DPI } from "../utils/dpi";
 import { InputHandler, MouseButton } from "./input-handler";
 
 export type OnButtonPressedListener = (source: Button) => void;
@@ -8,10 +8,12 @@ export type OnButtonPressedListener = (source: Button) => void;
 export class Button {
 
 	protected bounds: Rectangle;
-	protected isDirty = false;
+	protected isDirty = true;
 	protected isPressed = false;
 	protected isHovered = false;
 	private listeners: Array<OnButtonPressedListener> = [];
+
+	constructor(public text: string) {  }
 
 	public async setup() {
 		// Ignore
@@ -25,6 +27,7 @@ export class Button {
 		const mouse = InputHandler.mouse;
 
 		if (this.bounds.contains(mouse)) {
+			Cursor.set(CursorType.Pointer);
 			if (!this.isHovered) this.invalidate();
 			this.isHovered = true;
 
@@ -50,15 +53,27 @@ export class Button {
 		this.isDirty = false;
 
 		if (this.isPressed) {
-			renderInnerPanel(ctx, this.bounds, BORDER * 0.75);
+			// Draw background
+			ctx.fillStyle = "#ccc";
+			ctx.fillRect(this.bounds.x, this.bounds.y, this.bounds.width, this.bounds.height);
 		} else {
-			renderOutsidePanel(ctx, this.bounds, BORDER * 0.75);
+			// Draw background
+			ctx.fillStyle = "#eee";
+			ctx.fillRect(this.bounds.x, this.bounds.y, this.bounds.width, this.bounds.height);
 		}
+
+		// Draw text
+		ctx.fillStyle = "#000";
+		ctx.font = "12pt";
+		ctx.textAlign = "center";
+		ctx.textBaseline = "middle";
+		ctx.fillText(this.text, this.bounds.x + this.bounds.width / 2, this.bounds.y + this.bounds.height / 2);
+
 
 		if (this.isHovered) {
 			// Draw border
-			ctx.strokeStyle = COLOR_SHADOW;
-			ctx.lineWidth = 1 * UI_SCALING;
+			ctx.strokeStyle = "#ccc";
+			ctx.lineWidth = DPI.dpi;
 			ctx.strokeRect(this.bounds.x, this.bounds.y, this.bounds.width, this.bounds.height);
 		}
 	}

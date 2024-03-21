@@ -3,9 +3,11 @@ export class Vector {
 	public x: number;
 	public y: number;
 
-	constructor(x: number, y: number) {
+	constructor(x: number, y: number | undefined = undefined) {
 		this.x = x;
-		this.y = y;
+
+		if (y === undefined) this.y = x;
+		else this.y = y;
 	}
 
 	public dot(vector: Vector): number {
@@ -36,6 +38,10 @@ export class Vector {
 
 	public clone(): Vector {
 		return new Vector(this.x, this.y);
+	}
+
+	public static distance(a: Vector, b: Vector): number {
+		return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
 	}
 
 	public get length(): number {
